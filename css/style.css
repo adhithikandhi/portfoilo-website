@@ -1,0 +1,94 @@
+/* Custom styles and animations for Adhithi Kandhi's sliding portfolio */
+
+/* Custom Google Fonts base imports */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap');
+
+body {
+    font-family: 'Outfit', sans-serif;
+    overflow: hidden; /* Enforces horizontal deck scrolling */
+    background: linear-gradient(135deg, #fffdfa 0%, #fff7ed 100%);
+}
+
+/* Custom Scrollbar for inner-card content overflow scrolling */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #fffdfb;
+}
+::-webkit-scrollbar-thumb {
+    background: #fed7aa;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #fb923c;
+}
+
+/* Page horizontal deck styles */
+.slider-container {
+    display: flex;
+    width: 500vw; /* 5 Pages side-by-side */
+    height: 100vh;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    will-change: transform;
+}
+
+.slide-panel {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    overflow-y: auto; /* Allow scroll inside specific page if needed */
+    padding-top: 5rem; /* Space for fixed header */
+    padding-bottom: 2rem;
+}
+
+/* Glassmorphism style cards in orange accent */
+.glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(254, 215, 170, 0.5); /* translucent border-brand-200 */
+    box-shadow: 0 10px 30px -10px rgba(249, 115, 22, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(249, 115, 22, 0.4);
+    box-shadow: 0 20px 40px -15px rgba(249, 115, 22, 0.15);
+}
+
+/* Floating animation for enlarged profile picture */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(1deg);
+    }
+}
+
+.profile-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Glow Background Blob Decoration */
+.glow-blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(120px);
+    z-index: -10;
+    opacity: 0.6;
+    mix-blend-mode: multiply;
+}
+
+/* Left-to-right Navigation highlight animation */
+.nav-indicator {
+    position: absolute;
+    bottom: -2px;
+    height: 3px;
+    background-color: #f97316; /* brand orange */
+    transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    border-radius: 9999px;
+}
